@@ -1,0 +1,515 @@
+#include <stdio.h>
+
+#define MAX 100
+
+typedef struct {
+    int codigo;
+    int idade;
+    char telefone[15];
+} Cliente;
+
+int main() {
+    Cliente clientes[MAX];
+    int total = 0;
+    int opcao;
+
+    do {
+        printf("\n1 - Cadastrar cliente\n");
+        printf("2 - Listar clientes\n");
+        printf("3 - Sair\n");
+        printf("Opcao: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 1) {
+            if (total < MAX) {
+                printf("Codigo: ");
+                scanf("%d", &clientes[total].codigo);
+                printf("Idade: ");
+                scanf("%d", &clientes[total].idade);
+                printf("Telefone: ");
+                scanf("%s", clientes[total].telefone);
+                total++;
+            } else {
+                printf("Limite de clientes atingido.\n");
+            }
+        } else if (opcao == 2) {
+            for (int i = 0; i < total; i++) {
+                printf("Codigo: %d | Idade: %d | Telefone: %s\n",
+                       clientes[i].codigo, clientes[i].idade, clientes[i].telefone);
+            }
+        }
+    } while (opcao != 3);
+
+    return 0;
+}
+----------------------------------
+
+#include <stdio.h>
+
+#define MAX 100
+
+typedef struct {
+    int codigo;
+    int quantidade;
+    float preco;
+} Produto;
+
+int main() {
+    Produto produtos[MAX];
+    int total = 0;
+    int opcao;
+
+    do {
+        printf("\n1 - Cadastrar produto\n");
+        printf("2 - Exibir valor total do estoque\n");
+        printf("3 - Sair\n");
+        printf("Opcao: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 1) {
+            if (total < MAX) {
+                printf("Codigo: ");
+                scanf("%d", &produtos[total].codigo);
+                printf("Quantidade: ");
+                scanf("%d", &produtos[total].quantidade);
+                printf("Preco: ");
+                scanf("%f", &produtos[total].preco);
+                total++;
+            } else {
+                printf("Limite de produtos atingido.\n");
+            }
+        } else if (opcao == 2) {
+            float valorTotal = 0;
+            for (int i = 0; i < total; i++) {
+                valorTotal += produtos[i].quantidade * produtos[i].preco;
+            }
+            printf("Valor total investido no estoque: R$ %.2f\n", valorTotal);
+        }
+    } while (opcao != 3);
+
+    return 0;
+}
+
+=--------------------------------
+
+
+#include <stdio.h>
+
+#define MAX 100
+
+typedef struct {
+    int matricula;
+    float nota1;
+    float nota2;
+} Aluno;
+
+int main() {
+    Aluno alunos[MAX];
+    int total = 0;
+    int opcao;
+
+    do {
+        printf("\n1 - Cadastrar aluno\n");
+        printf("2 - Listar alunos e medias\n");
+        printf("3 - Sair\n");
+        printf("Opcao: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 1) {
+            if (total < MAX) {
+                printf("Matricula: ");
+                scanf("%d", &alunos[total].matricula);
+                printf("Nota 1: ");
+                scanf("%f", &alunos[total].nota1);
+                printf("Nota 2: ");
+                scanf("%f", &alunos[total].nota2);
+                total++;
+            } else {
+                printf("Limite de alunos atingido.\n");
+            }
+        } else if (opcao == 2) {
+            for (int i = 0; i < total; i++) {
+                float media = (alunos[i].nota1 + alunos[i].nota2) / 2;
+                printf("Matricula: %d | Media: %.2f\n", alunos[i].matricula, media);
+            }
+        }
+    } while (opcao != 3);
+
+    return 0;
+}
+
+=====================================================
+#include <stdio.h>
+
+#define MAX 100
+
+typedef struct {
+    int codigo;
+    int anoPublicacao;
+    int qtdPaginas;
+} Livro;
+
+int main() {
+    Livro livros[MAX];
+    int total = 0;
+    int opcao;
+
+    do {
+        printf("\n1 - Cadastrar livro\n");
+        printf("2 - Filtrar livros publicados apos 2020\n");
+        printf("3 - Sair\n");
+        printf("Opcao: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 1) {
+            if (total < MAX) {
+                printf("Codigo: ");
+                scanf("%d", &livros[total].codigo);
+                printf("Ano de publicacao: ");
+                scanf("%d", &livros[total].anoPublicacao);
+                printf("Quantidade de paginas: ");
+                scanf("%d", &livros[total].qtdPaginas);
+                total++;
+            } else {
+                printf("Limite de livros atingido.\n");
+            }
+        } else if (opcao == 2) {
+            total++;
+                total++;
+            }
+        } else if (opcao == 2) {
+            for (int i = 0; i < total; i++) {
+                if (livros[i].anoPublicacao > 2020) {
+                    printf("Codigo: %d | Ano: %d | Paginas: %d\n",
+                           livros[i].codigo, livros[i].anoPublicacao, livros[i].qtdPaginas)
+====================
+
+
+#include <stdio.h>
+
+#define MAX 100
+
+typedef struct {
+    int codigo;
+    int ano;
+    float preco;
+} Carro;
+
+int main() {
+    Carro carros[MAX];
+    int total = 0;
+    int opcao;
+
+    do {
+        printf("\n1 - Cadastrar carro\n");
+        printf("2 - Buscar por preco maximo\n");
+        printf("3 - Sair\n");
+        printf("Opcao: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 1) {
+            if (total < MAX) {
+                printf("Codigo: ");
+                scanf("%d", &carros[total].codigo);
+                printf("Ano: ");
+                scanf("%d", &carros[total].ano);
+                printf("Preco: ");
+                scanf("%f", &carros[total].preco);
+                total++;
+            } else {
+                printf("Limite de carros atingido.\n");
+            }
+        } else if (opcao == 2) {
+            float precoMax;
+            printf("Digite o preco maximo: ");
+            scanf("%f", &precoMax);
+            for (int i = 0; i < total; i++) {
+                if (carros[i].preco < precoMax) {
+                    printf("Codigo: %d | Ano: %d | Preco: R$ %.2f\n",
+                           carros[i].codigo, carros[i].ano, carros[i].preco);
+                }
+            }
+        }
+    } while (opcao != 3);
+
+    return 0;
+}
+                           
+
+==============================
+
+#include <stdio.h>
+
+#define MAX 100
+
+typedef struct {
+    int codigo;
+    float peso;
+    float altura;
+} Perfil;
+
+int main() {
+    Perfil perfis[MAX];
+    int total = 0;
+    int opcao;
+
+    do {
+        printf("\n1 - Cadastrar aluno\n");
+        printf("2 - Exibir aluno mais alto\n");
+        printf("3 - Sair\n");
+        printf("Opcao: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 1) {
+            if (total < MAX) {
+                printf("Codigo: ");
+                scanf("%d", &perfis[total].codigo);
+                printf("Peso: ");
+                scanf("%f", &perfis[total].peso);
+                printf("Altura: ");
+                scanf("%f", &perfis[total].altura);
+                total++;
+            } else {
+                printf("Limite de alunos atingido.\n");
+            }
+        } else if (opcao == 2) {
+            if (total == 0) {
+                printf("Nenhum aluno cadastrado.\n");
+            } else {
+                int maiorIndice = 0;
+                for (int i = 1; i < total; i++) {
+                    if (perfis[i].altura > perfis[maiorIndice].altura) {
+                        maiorIndice = i;
+                    }
+                }
+                printf("Codigo: %d | Peso: %.2f | Altura: %.2f\n",
+                       perfis[maiorIndice].codigo, perfis[maiorIndice].peso, perfis[maiorIndice].altura);
+            }
+        }
+    } while (opcao != 3);
+
+    return 0;
+}
+
+=======================================
+#include <stdio.h>
+
+#define MAX 100
+
+typedef struct {
+    int numeroConta;
+    float saldo;
+} Conta;
+
+int main() {
+    Conta contas[MAX];
+    int total = 0;
+    int opcao;
+
+    do {
+        printf("\n1 - Cadastrar conta\n");
+        printf("2 - Depositar\n");
+        printf("3 - Mostrar todas as contas\n");
+        printf("4 - Sair\n");
+        printf("Opcao: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 1) {
+            if (total < MAX) {
+                printf("Numero da conta: ");
+                scanf("%d", &contas[total].numeroConta);
+                printf("Saldo inicial: ");
+                scanf("%f", &contas[total].saldo);
+                total++;
+            } else {
+                printf("Limite de contas atingido.\n");
+            }
+        } else if (opcao == 2) {
+            if (total == 0) {
+                printf("Nenhuma conta cadastrada.\n");
+            } else {
+                int indice;
+                float valor;
+                printf("Indice da conta (0 a %d): ", total - 1);
+                scanf("%d", &indice);
+                if (indice >= 0 && indice < total) {
+                    printf("Valor a depositar: ");
+                    scanf("%f", &valor);
+                    contas[indice].saldo += valor;
+                } else {
+                    printf("Indice invalido.\n");
+                }
+            }
+        } else if (opcao == 3) {
+            for (int i = 0; i < total; i++) {
+                printf("Conta: %d | Saldo: R$ %.2f\n", contas[i].numeroConta, contas[i].saldo);
+            }
+        }
+    } while (opcao != 4);
+
+    return 0;
+}
+
+============================
+
+#include <stdio.h>
+
+#define MAX 100
+
+typedef struct {
+    int numeroCasa;
+    float consumoKwh;
+} Imovel;
+
+int main() {
+    Imovel imoveis[MAX];
+    int total = 0;
+    int opcao;
+    float media = 0;
+
+    do {
+        printf("\n1 - Cadastrar imovel\n");
+        printf("2 - Calcular media de consumo da rua\n");
+        printf("3 - Listar imoveis acima da media\n");
+        printf("4 - Sair\n");
+        printf("Opcao: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 1) {
+            if (total < MAX) {
+                printf("Numero da casa: ");
+                scanf("%d", &imoveis[total].numeroCasa);
+                printf("Consumo em kWh: ");
+                scanf("%f", &imoveis[total].consumoKwh);
+                total++;
+            } else {
+                printf("Limite de imoveis atingido.\n");
+            }
+        } else if (opcao == 2) {
+            if (total == 0) {
+                printf("Nenhum imovel cadastrado.\n");
+            } else {
+                float soma = 0;
+                for (int i = 0; i < total; i++) {
+                    soma += imoveis[i].consumoKwh;
+                }
+                media = soma / total;
+                printf("Media de consumo da rua: %.2f kWh\n", media);
+            }
+        } else if (opcao == 3) {
+            for (int i = 0; i < total; i++) {
+                if (imoveis[i].consumoKwh > media) {
+                    printf("Casa: %d | Consumo: %.2f kWh\n", imoveis[i].numeroCasa, imoveis[i].consumoKwh);
+                }
+            }
+        }
+    } while (opcao != 4);
+
+    return 0;
+}
+
+========================
+#include <stdio.h>
+
+#define MAX 100
+
+typedef struct {
+    int id;
+    int pontos;
+} Jogador;
+
+int main() {
+    Jogador jogadores[MAX];
+    int total = 0;
+    int opcao;
+
+    do {
+        printf("\n1 - Cadastrar jogador\n");
+        printf("2 - Buscar jogador por ID\n");
+        printf("3 - Sair\n");
+        printf("Opcao: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 1) {
+            if (total < MAX) {
+                printf("ID do jogador: ");
+                scanf("%d", &jogadores[total].id);
+                printf("Pontos: ");
+                scanf("%d", &jogadores[total].pontos);
+                total++;
+            } else {
+                printf("Limite de jogadores atingido.\n");
+            }
+        } else if (opcao == 2) {
+            int idBusca, encontrado = 0;
+            printf("Digite o ID a buscar: ");
+            scanf("%d", &idBusca);
+            for (int i = 0; i < total; i++) {
+                if (jogadores[i].id == idBusca) {
+                    printf("Jogador encontrado! Pontos: %d\n", jogadores[i].pontos);
+                    encontrado = 1;
+                    break;
+                }
+            }
+            if (!encontrado) {
+                printf("Jogador nao encontrado.\n");
+            }
+        }
+    } while (opcao != 3);
+
+    return 0;
+}
+
+
+
+
+
+========================================
+
+#include <stdio.h>
+
+#define MAX 100
+
+typedef struct {
+    int codigo;
+    int idade;
+    float salario;
+} Funcionario;
+
+int main() {
+    Funcionario funcionarios[MAX];
+    int total = 0;
+    int opcao;
+
+    do {
+        printf("\n1 - Cadastrar funcionario\n");
+        printf("2 - Contar funcionarios com mais de 40 anos e salario acima de R$ 5000,00\n");
+        printf("3 - Sair\n");
+        printf("Opcao: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 1) {
+            if (total < MAX) {
+                printf("Codigo: ");
+                scanf("%d", &funcionarios[total].codigo);
+                printf("Idade: ");
+                scanf("%d", &funcionarios[total].idade);
+                printf("Salario: ");
+                scanf("%f", &funcionarios[total].salario);
+                total++;
+            } else {
+                printf("Limite de funcionarios atingido.\n");
+            }
+        } else if (opcao == 2) {
+            int contador = 0;
+            for (int i = 0; i < total; i++) {
+                if (funcionarios[i].idade > 40 && funcionarios[i].salario no > 5000.0) {
+                    contador++;
+                }
+            }
+            printf("Funcionarios com mais de 40 anos e salario acima de R$ 5000,00: %d\n", contador);
+        }
+    } while (opcao vai != 3);
+
+    return 0;
+}
