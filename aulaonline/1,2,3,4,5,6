@@ -1,0 +1,196 @@
+1-
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+void contarLetra(char palavra[], char letra) {
+    int cont = 0;
+    for (int i = 0; palavra[i] != '\0'; i++) {
+        if (tolower((unsigned char)palavra[i]) == tolower((unsigned char)letra)) {
+            cont++;
+        }
+    }
+    printf("A letra '%c' aparece %d vez(es).\n", letra, cont);
+}
+
+int main() {
+    char palavra[100];
+    char letra;
+
+    printf("Palavra: ");
+    fgets(palavra, sizeof(palavra), stdin);
+    palavra[strcspn(palavra, "\n")] = '\0';
+
+    printf("Letra: ");
+    scanf(" %c", &letra);
+
+    contarLetra(palavra, letra);
+    return 0;
+}
+------------
+2
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+int soDigitos(char s[]) {
+    if (s[0] == '\0') return 0;
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (!isdigit((unsigned char)s[i])) return 0;
+    }
+    return 1;
+}
+
+void validarData(char dia[], char mes[], char ano[]) {
+    if (!soDigitos(dia) || !soDigitos(mes) || !soDigitos(ano)) {
+        printf("DATA INVÁLIDA\n");
+        return;
+    }
+
+    int d = atoi(dia);
+    int m = atoi(mes);
+    int a = atoi(ano);
+
+    if (a < 1 || m < 1 || m > 12 || d < 1) {
+        printf("DATA INVÁLIDA\n");
+        return;
+    }
+
+    int diasNoMes;
+    switch (m) {
+        case 4: case 6: case 9: case 11:
+            diasNoMes = 30;
+            break;
+        case 2:
+            diasNoMes = ((a % 4 == 0 && a % 100 != 0) || (a % 400 == 0)) ? 29 : 28;
+            break;
+        default:
+            diasNoMes = 31;
+    }
+
+    if (d <= diasNoMes) {
+        printf("DATA VÁLIDA\n");
+    } else {
+        printf("DATA INVÁLIDA\n");
+    }
+}
+
+int main() {
+    char dia[20], mes[20], ano[20];
+
+    printf("Dia: ");
+    scanf("%19s", dia);
+    printf("Mês: ");
+    scanf("%19s", mes);
+    printf("Ano: ");
+    scanf("%19s", ano);
+
+    validarData(dia, mes, ano);
+    return 0;
+}
+------------------------------------------
+3#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int contarVogais(char frase[]) {
+    int cont = 0;
+    for (int i = 0; frase[i] != '\0'; i++) {
+        char c = tolower((unsigned char)frase[i]);
+        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+            cont++;
+        }
+    }
+    return cont;
+}
+
+int main() {
+    char frase[200];
+
+    printf("Frase: ");
+    fgets(frase, sizeof(frase), stdin);
+    frase[strcspn(frase, "\n")] = '\0';
+
+    printf("Quantidade de vogais: %d\n", contarVogais(frase));
+    return 0;
+}
+------------------------------------------------------------
+4-
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+char* paraMaiuscula(char frase[]) {
+    for (int i = 0; frase[i] != '\0'; i++) {
+        frase[i] = toupper((unsigned char)frase[i]);
+    }
+    return frase;
+}
+
+int main() {
+    char frase[200];
+
+    printf("Frase: ");
+    fgets(frase, sizeof(frase), stdin);
+    frase[strcspn(frase, "\n")] = '\0';
+
+    printf("%s\n", paraMaiuscula(frase));
+    return 0;
+}
+--------------------------------------------------------
+5-
+#include <stdio.h>
+#include <stdbool.h>
+
+bool estaOrdenado(int vetor[], int tamanho) {
+    for (int i = 0; i < tamanho - 1; i++) {
+        if (vetor[i] > vetor[i + 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    int tamanho;
+
+    printf("Tamanho do vetor: ");
+    scanf("%d", &tamanho);
+
+    int vetor[tamanho];
+    for (int i = 0; i < tamanho; i++) {
+        printf("Elemento %d: ", i + 1);
+        scanf("%d", &vetor[i]);
+    }
+
+    printf(estaOrdenado(vetor, tamanho) ? "true\n" : "false\n");
+    return 0;
+}
+-----------------------------------------------------------------
+6-
+#include <stdio.h>
+#include <string.h>
+
+char* primeiroNome(char nomeCompleto[], char resultado[]) {
+    int i = 0;
+    while (nomeCompleto[i] == ' ') i++;
+
+    int j = 0;
+    while (nomeCompleto[i] != '\0' && nomeCompleto[i] != ' ') {
+        resultado[j++] = nomeCompleto[i++];
+    }
+    resultado[j] = '\0';
+    return resultado;
+}
+
+int main() {
+    char nomeCompleto[100], resultado[100];
+
+    printf("Nome completo: ");
+    fgets(nomeCompleto, sizeof(nomeCompleto), stdin);
+    nomeCompleto[strcspn(nomeCompleto, "\n")] = '\0';
+
+    printf("Primeiro nome: %s\n", primeiroNome(nomeCompleto, resultado));
+    return 0;
+}
